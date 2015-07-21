@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>mapbox.js example</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+    <style>
+      body {
+        margin:0;
+        padding:0;
+      }
+      #map {
+        position:absolute;
+        top:0;
+        bottom:0;
+        width:100%;
+      }
+      </style>
+</head>
+<body>
+  <div id='map'></div>
+
+  <script>
+
+    var geojsonPoint = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "marker-color": "#ff0000",
+            "marker-size": "medium",
+            "marker-symbol": "town-hall",
+            "city": "Washington D.C."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -77.0306396484375,
+              38.9086673099066
+            ]
+          }
+        }
+      ]
+    }
+
+    var geojsonPolygon = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "stroke": "#555555",
+            "stroke-width": 2,
+            "stroke-opacity": 1,
+            "fill": "#555555",
+            "fill-opacity": 0.5,
+            "description": "The National Mall"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -77.03930854797363,
+                  38.90028479665852
+                ],
+                [
+                  -77.03347206115723,
+                  38.90021799974977
+                ],
+                [
+                  -77.03347206115723,
+                  38.892101707724315
+                ],
+                [
+                  -77.01313018798828,
+                  38.89213511000375
+                ],
+                [
+                  -77.0075511932373,
+                  38.89714527402156
+                ],
+                [
+                  -77.00540542602539,
+                  38.89666097359819
+                ],
+                [
+                  -77.0052981376648,
+                  38.88760895800297
+                ],
+                [
+                  -77.03201293945312,
+                  38.88757555359511
+                ],
+                [
+                  -77.03201293945312,
+                  38.883566910615684
+                ],
+                [
+                  -77.03956604003905,
+                  38.888026511775855
+                ],
+                [
+                  -77.05166816711426,
+                  38.88769246895389
+                ],
+                [
+                  -77.05312728881836,
+                  38.88956308852534
+                ],
+                [
+                  -77.05252647399902,
+                  38.892769750328455
+                ],
+                [
+                  -77.03956604003905,
+                  38.89223531674778
+                ],
+                [
+                  -77.03930854797363,
+                  38.90028479665852
+                ]
+              ]
+            ]
+          }
+        }
+      ]
+    }
+
+    L.mapbox.accessToken = 'pk.eyJ1Ijoicnlhbmpob2RnZSIsImEiOiJ5clRfMjRRIn0.KldXlC8cT9zpaQGY_YSOGQ';
+
+    var map = L.mapbox.map('map', 'mapbox.streets')
+        .setView([39.16, -76.43], 9)
+        .addControl(L.mapbox.geocoderControl('mapbox.places'));
+
+    var infoControl = L.mapbox.infoControl()
+    map.addControl(infoControl);
+
+    L.geoJson(geojsonPolygon, {
+	    onEachFeature: function (feature, layer) {
+        layer.bindPopup(feature.properties.description);
+
+	      layer.on('mouseover', function (e) {
+          console.log("mouseover");
+          this.openPopup();
+          infoControl.addInfo(feature.properties.description)
+        });
+
+        layer.on('mouseout', function (e) {
+          console.log("mouseout");
+          this.closePopup();
+        });
+	    }
+		}).addTo(map);
+
+    L.mapbox.featureLayer().setGeoJSON(geojsonPoint).addTo(map);
+
+</script>
+</body>
+</html>
