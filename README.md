@@ -4,6 +4,7 @@
 - [Leaflet Example](http://ryanjhodge.github.io/vegasjs-web-mapping/leaflet-example.html)
 - [Mapbox.js Example](http://ryanjhodge.github.io/vegasjs-web-mapping/mapbox.js-example.html)
 - [CartoDB Leaflet Example](http://cartodb.github.io/cartodb.js/examples/leaflet.html)
+
 ## Resources
 ### Cartography
 - http://mapschool.io/ - a free introduction to geo
