@@ -3,7 +3,7 @@
 ## Examples
 - [Leaflet Example](http://ryanjhodge.github.io/vegasjs-web-mapping/leaflet-example.html)
 - [Mapbox.js Example](http://ryanjhodge.github.io/vegasjs-web-mapping/mapbox.js-example.html)
-- [CartoDB Leaflet Example](http://ryanjhodge.github.io/vegasjs-web-mapping/cartodb-example.html)
+- [CartoDB.js Leaflet Example](http://ryanjhodge.github.io/vegasjs-web-mapping/cartodb-example.html)
 
 ## Resources
 ### Cartography
