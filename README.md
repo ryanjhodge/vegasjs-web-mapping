@@ -1,4 +1,5 @@
-# VegasJS Web Mapping 07/21/2015
+# Web Mapping Presentation
+### [VegasJS #41 - 07/21/2015](http://www.meetup.com/VegasJS/events/223300432/)
 
 ## Examples
 - [Leaflet Example](http://ryanjhodge.github.io/vegasjs-web-mapping/leaflet-example.html)
